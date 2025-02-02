@@ -1,8 +1,7 @@
 package Task2;
 
-import javax.swing.text.Position;
 import java.util.*;
-import java.util.stream.Collector;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -51,14 +50,9 @@ public class Main {
                 )
                 ;
         System.out.println(avgAge);
-
-
-
     }
-
 
     public static void main (String[] args){
-        /*
         Stream.of( 5, 2, 10, 9, 4, 3, 10, 1, 13)
                 .distinct()
                 .forEach(System.out::println);
@@ -79,7 +73,34 @@ public class Main {
                 .forEach(System.out::println);
 
         System.out.println("--------------");
-*/
         streamEngineer();
+
+        System.out.println("--------------");
+        Stream.of("aaa", "bb","ccccccc", "dddd","eee", "f")
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .limit(1)
+                .forEach(System.out::println);
+
+        System.out.println("--------------");
+        String s = "one two three four five two four one two";
+        Map<String, Long> wordNum = Arrays.stream(s.split(" "))
+                .collect(
+                        Collectors.groupingBy(Function.identity(),Collectors.counting())
+                );
+        System.out.println(wordNum);
+
+        System.out.println("--------------");
+        Stream.of("ggg","aaa", "bb","ccccccc", "dddd","eee", "f")
+                .sorted(Comparator.comparingInt(String::length).thenComparing(Comparator.naturalOrder()))
+                .forEach(System.out::println);
+
+        System.out.println("--------------");
+        List<String> listLine = new ArrayList<>(Arrays.asList("one two three four five", "Masha Dasha Katya Nadya Lena", "Sergey Ivan Vasya Misha Valera"));
+        String maxWord = listLine.stream()
+                .flatMap(line -> Arrays.stream(line.split(" ")))
+                .max(Comparator.comparingInt(String::length))
+                .get();
+        System.out.println(maxWord);
     }
 }
+
