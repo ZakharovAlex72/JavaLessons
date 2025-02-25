@@ -9,7 +9,6 @@ public class Main {
             myThreadPool.execute(() -> {
                 System.out.println("Task " + taskId + " - Thread " + Thread.currentThread().getName() + " START");
                 try {
-                    // Simulate some work with Thread.sleep
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();

@@ -40,7 +40,7 @@ public class MyThreadPool {
     public void execute(Runnable task) {
         synchronized (workQueue) {
             if (isShutdown) {
-                throw new IllegalStateException("ThreadPool is shut down");
+                throw new IllegalStateException("ThreadPool is shut down!");
             }
             workQueue.add(task);
             workQueue.notify();
