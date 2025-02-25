@@ -2,7 +2,6 @@ package Task3;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MyThreadPool {
     private final Queue<Runnable> workQueue = new LinkedList<>();
